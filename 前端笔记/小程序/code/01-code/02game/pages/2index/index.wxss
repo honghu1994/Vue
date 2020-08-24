@@ -1,0 +1,21 @@
+/* pages/2index/index.wxss */
+.box{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.box .mybox {
+  width: 33.33%;
+  text-align: center;
+
+}
+.box .mybox image{
+  width: 90%;
+  height: 100px;
+}
+.box .mybox view {
+  margin-bottom: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

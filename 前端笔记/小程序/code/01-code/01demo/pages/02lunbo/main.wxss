@@ -1,0 +1,4 @@
+/* pages/02lunbo/main.wxss */
+swiper image {
+  width: 100%;
+}

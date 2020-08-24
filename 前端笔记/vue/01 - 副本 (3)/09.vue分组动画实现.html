@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Vue学习第三天·axios及基础动画</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <style>
+    .fade-enter-active {
+      transition: all 5.5s ease;
+    }
+    .fade-leave-active {
+      transition: all 5.5s ease;
+    }
+    .fade-enter,
+    .fade-leave-to {
+      opacity: 0;
+      transform: translateX(300px);
+    }
+  </style>
+  <body>
+    <div id="app">
+      <button @click="add()">
+        添加元素
+      </button>
+      <transition-group name="fade" tag="div">
+        <p v-for="item in items" :key="item">{{ item }}</p>
+      </transition-group>
+    </div>
+  </body>
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+  const options = {
+    el: '#app',
+    data: {
+      items:[
+          "蜡笔小新","犬夜叉","樱桃小丸子","凹凸曼"
+      ]
+    },
+    computed: {},
+    methods: {
+        add(){
+            this.items.push("海绵宝宝") 
+        }
+    },
+  };
+  const app = new Vue(options);
+</script>

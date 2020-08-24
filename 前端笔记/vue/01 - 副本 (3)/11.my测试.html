@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>v-text</h1>
+    <p>我问:{{newmsg}}</p>
+    <h1>v-html</h1>
+    <p v-html='msg'>我问:{{msg}}</p>
+
+<P :title='msg'>你好</P>
+<p><button @click="sayhi">点我试试</button></p>
+<p> <input type="text" v-model="msg"> </p>
+
+  </div>
+  <script src="./lib/vue.js"></script>
+  <script>
+    const options = {
+      el: '#app',
+      data: {
+        msg: '<em>今天早饭你们吃了吗?</em>',
+        msg2:"哈哈哈"
+      },
+      methods:{
+        sayhi(){
+          alert(this.msg2)
+        }
+      },
+      updated() {
+        console.log('updated被执行了')
+      },
+
+      computed: {
+       newmsg(){
+         console.log('计算属性被执行了');
+         return '我来问:'+this.msg2;
+         
+       }
+      },
+      
+    }
+    const app =new Vue(options);
+  </script>
+</body>
+
+</html>

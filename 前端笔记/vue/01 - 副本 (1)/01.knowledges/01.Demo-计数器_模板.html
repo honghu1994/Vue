@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .input-num {
+        width: 180px;
+        height: 40px;
+        border: 1px solid gray;
+        display: flex;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+      .input-num button {
+        width: 50px;
+        height: 100%;
+        font-size: 25px;
+        color: gray;
+        cursor: pointer;
+      }
+      .input-num span {
+        height: 100%;
+        border: 1px solid gray;
+        flex: 1;
+        text-align: center;
+        line-height: 40px;
+      }
+      .input-num button.disabled {
+        cursor: not-allowed;
+        color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 计数器 -->
+      <div class="input-num">
+        <button @click="sub" :class="{disabled:num===0}">
+        <!-- <button @click="sub" :class="num===0?'disabled':''"> -->
+          -
+        </button>
+        <span>{{ num }}</span>
+        <button @click="add" :class="{disabled:num===10}">
+          +
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="./lib/vue.js"></script>
+<!-- 编码 -->
+<script>
+  /*
+    1. 数字和显示
+      1. data.num:0
+      2. {{num}}
+    2. +-按钮功能的实现
+      1.+点击 v-on:click @click:add num++
+      2.-点击 @click:sub  num--
+    3.数字范围0-10
+      1. 当数字为0的时候
+        1. 对于sub，不能减
+        2. -按钮加上disabled
+      2. 当数字为10的时候
+        1. add 不能再加
+        2. +按钮加上disabled
+  */
+
+  new Vue({
+    el:'#app',
+    data:{
+      num:0
+    },
+    methods: {
+      // -减号的功能
+      sub(){
+        // 如果为0的时候，不再减
+        // if(this.num===0){
+        //   return
+        // }
+        this.num--
+      },
+      // +加号的功能
+      add(){
+        // 数字为10的时候，不再加
+        if(this.num===10){
+          return
+        }
+        this.num++
+      }
+    },
+  })
+  
+</script>

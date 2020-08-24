@@ -1,0 +1,7 @@
+.myview {
+  width: 400rpx;
+  height: 100rpx;
+  background: pink;
+  text-align: center;
+  line-height: 100rpx;
+}

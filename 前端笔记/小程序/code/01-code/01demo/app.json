@@ -1,0 +1,23 @@
+{
+  "pages": [
+    "pages/06pageto/main",
+    "pages/06page/main",
+      "pages/05page/main",
+    "pages/04page/main",
+    "pages/01changeImg/main",
+    
+    "pages/03pageto/main",
+    "pages/03page/main",
+    "pages/02lunbo/main",
+    
+    "pages/index/index",
+    "pages/log/log"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

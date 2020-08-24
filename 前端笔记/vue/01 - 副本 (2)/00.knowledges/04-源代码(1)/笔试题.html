@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .gra {
+            widows: 100px;
+            height: 100px;
+            background: linear-gradient(to top right, #000, #fff);
+        }
+
+        .shuang {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            font-size: 25px;
+            text-align: center;
+            line-height: 100px;
+            border: 5px solid red;
+            outline: 5px solid black;
+            /*实现双边框的关键*/
+        }
+
+        /*实现定位盒子水平居中 css  */
+        .box {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            background-color: red;
+            margin: 0 auto;
+        }
+
+        .content {
+            background-color: pink;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="height:1px;overflow:hidden;background:red"></div>
+
+    <!-- 请使用CSS3画出一个线性渐变，渐变的方向是从右上角到左下角，起点颜色是从白色到黑色，请写出标准的写法 。 -->
+    <div class="gra"></div>
+    <!-- 实现双边框     outline （轮廓）是绘制于元素周围的一条线-->
+    <div class="shuang">双边框</div>
+    <!-- 实现定位盒子水平居中 -->
+    <div class="box">
+        <div class="content">定位盒子居中</div>
+    </div>
+
+
+    <!-- 闭包 -->
+    <ul id="testUL">
+        <li> index = 0</li>
+        <li> index = 1</li>
+        <li> index = 2</li>
+        <li> index = 3</li>
+    </ul>
+
+
+    <script>
+
+        // 闭包是指有权访问另一个函数作用域中变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量, 利用闭包可以突破作用链域，将函数内部的变量和方法传递到外部。
+
+        // 闭包的特性：
+
+        // 1.函数内再嵌套函数
+        // 2.内部函数可以引用外层的参数和变量
+        // 3.参数和变量不会被垃圾回收机制回收
+
+        //li节点的onclick事件都能正确的弹出当前被点击的li索引
+
+        var nodes = document.getElementsByTagName("li");
+        for (i = 0; i < nodes.length; i += 1) {
+            nodes[i].onclick = (function (i) {
+                return function () {
+                    alert(i);
+                } //不用闭包的话，值每次都是4
+            })(i);
+        }
+
+    </script>
+
+</body>
+
+</html>

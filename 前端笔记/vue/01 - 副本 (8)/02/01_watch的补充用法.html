@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="text" v-model="msg">
+        <h1>{{msg}}</h1>
+
+        <hr>
+
+        <input type="text" v-model="obj.name">
+        <h1>obj.name = {{ obj.name }}</h1>
+
+        <input type="text" v-model="obj.dog.son.age">
+    </div>
+
+    <script src="./lib/vue.js"></script>
+
+    <script>
+        const app = new Vue({
+
+            el: "#app",
+            data: {
+                msg: "",
+                obj: {
+                    name: "",
+                    dog:{
+                        son:{
+                            age:19
+                        }
+                    }
+                }
+            },
+            // 当数据发生改变并且界面渲染完毕调用
+            // 它会把所有数据都管理起来，只要任意数据发生改变，都调用它
+            // updated() {
+            //     console.log('updated')
+            // },
+
+            // 用watch就可以保证具体只侦听某一个数据发生改变
+            watch: {
+
+                // 参数1：修改后的新数据
+                // 参数2：修改前的旧数据
+                // 参数名可以随便写
+                msg(newValue, oldValue) {
+
+                    // console.log('侦听msg');
+                    // console.log(newValue,oldValue);
+                    // 有参数的可以比较两次数据的异同
+                },
+
+                // 如果你侦听的是对象，修改的数据是对象里的属性，默认不会触发这个侦听
+                // obj(){
+                // 所以建议写具体的对象.属性
+                // 'obj.name'(){
+
+                //     console.log('触发了');
+                // }
+
+                // 用深度侦听就触发了
+                // 深度侦听，还会侦听到这个对象里的所有属性，不管这个属性藏的有多深，只要改变了，都会触发
+                obj: {
+
+                    handler(newValue,oldValue){
+                        // console.log('触发了');
+                        // console.log(newValue);
+                        // console.log(oldValue);
+                        
+                        console.log(newValue === oldValue);
+                        
+                    },
+                    deep: true
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

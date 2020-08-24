@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <!-- 使用 router-link 组件来导航（tab栏切换）. -->
+            <router-link to="/foo">点我去foo</router-link>
+            <router-link to="/bar">Go to Bar</router-link>
+        </p>
+
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view></router-view>
+    </div>
+
+    
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+    <script>
+
+
+        // 1. 创建 组件。
+        // 组件简写形式（组件的对象写法）
+        const Foo = { template: '<div><h2>我是foo里面的</h2></div>' }
+        const Bar = { template: '<div>bar</div>' }
+
+        // 2. 设置路由的规则
+        const routes = [
+            // 每个对象都是一条规则
+            // 当你在地址上后面输入/foo，那么就会显示出Foo这个组件
+            { path: '/foo', component: Foo },
+            // 当你在地址上后面输入/bar,那么就会显示出bar这个组件
+            { path: '/bar', component: Bar }
+        ]
+
+        // 3. 创建 路由 对象
+        // 并且把routes作为它的规则
+        const router = new VueRouter({
+            routes // (缩写) 相当于 routes: routes
+            // routes:routes，注意：要缩写就必须保证你的规则名字叫routes
+        })
+
+        // 4. 创建和挂载根实例。
+        const app = new Vue({
+            el: "#app",
+            // 挂载路由
+            router //这也是一个简写形式 router:router
+        })// .$mount('#app') 相当于是el:'#app'
+
+// 现在，应用已经启动了！
+    </script>
+</body>
+
+</html>

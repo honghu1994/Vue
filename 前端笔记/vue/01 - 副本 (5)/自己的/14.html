@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <button @click='toOne'>点我去第一个</button>
+    <button @click='toTwo'>点我去第二个</button>
+    <button @click="$router.push('/three')">点我去第三个</button>
+    <router-view></router-view>
+
+
+  
+  
+  </div>
+  <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+    <script>
+    const Foo={template:'<div><h2>我是foo里面的</h2></div>'}
+    const Bar={template:'<div>bar</div>'}
+    const three={template:' <div>three</div>'}
+
+    const routes= [
+      {path:'/one',component:Foo},
+      {path:'/two',component:Bar},
+      {path:'/three',component:three}
+    ]
+    const router = new VueRouter({
+      routes
+    })
+    new Vue({
+      el:'#app',
+      router,
+
+      methods: {
+        toOne(){
+        this.$router.push('/one')
+      },
+      toTwo(){
+        this.$router.push('/two')
+      }
+      },
+     
+    })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+<view>声明式导航</view>
+<navigator url="/pages/00page/main">去00page</navigator>
+
+<view>编程式导航</view>
+<view bindtap="fn">去00page</view>

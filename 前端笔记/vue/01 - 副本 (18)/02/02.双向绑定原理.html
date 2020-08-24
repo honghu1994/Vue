@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="txt" v-model>
+
+    <p v-bind></p>
+    <p v-bind></p>
+    <p v-bind></p>
+    
+    <script>
+
+        var txt = document.querySelector('[v-model]')
+        txt.oninput = function(){
+
+            // console.log(txt.value)
+            data.name = txt.value      
+        }
+
+        // 给对象添加属性的语法
+        var data = {}
+
+        // IE8和之前浏览器不支持
+        // 一种给对象添加属性的方式
+        // 给obj添加name属性
+        // 这样加属性的好处是，可以监听属性的赋值和取值
+        // 当对象给这个属性赋值时，就会调用set方法
+        // 取值时就会调用get方法
+        Object.defineProperty(data,'name',{
+
+            get(){
+                // console.log('取值了');
+                //必须在get最后写return _属性名
+                return _name;
+            },
+
+            // value是你赋值时是什么值，就传过来什么
+            set(value){
+                // console.log('set');
+                
+                // 必须写_属性名 = value
+                _name = value
+                // console.log(data.name);
+                var list = document.querySelectorAll('[v-bind]')
+                for(var i = 0; i < list.length; i++){
+
+                    list[i].innerHTML = value;
+                }
+            }
+        })
+
+
+    </script>
+</body>
+</html>

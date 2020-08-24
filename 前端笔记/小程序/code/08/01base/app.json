@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/01lifcircle/main",
+    "pages/02target/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+        /* 过渡动画 进入开始的时候的状态 这是一个时刻状态 */
+        .fade-enter{
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* 过渡动画进入的过程执行的css动画 这个是一个时间段状态 */
+        .fade-enter-active{
+            transition: all 2s ease;
+        }
+
+        /* 过渡动画 进入动画结束的时候的状态 这是一个时刻状态 */
+        .fade-enter-to{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+        /* 动画离开的时候的状态 这是一个时刻状态 */
+        .fade-leave{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+        /* 这个是离开的时候执行的css动画过程 这是一个时间段状态 */
+        .fade-leave-active{
+            transition: all 2s ease;
+        }
+
+        /* 这个是离开结束的时候的一个状态，这是一个时刻状态 */
+        .fade-leave-to{
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="isShow = !isShow">点击切换状态</button>
+        <transition name="fade">
+                <div class="box" v-if="isShow"></div>
+        </transition>  
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                //存储 显示状态
+                isShow:false
+            }
+        })
+    </script>
+</body>
+</html>
+
+<!-- 
+    vue单个元素过渡动画 使用 transition 标签进行包裹 定义一个name 属性，默认是 v-
+    name会配合vue执行的过程动态的添加和移除 6个class类名
+    动画触发的条件是：v-if 或者 v-show 切换显示状态来触发的
+ -->

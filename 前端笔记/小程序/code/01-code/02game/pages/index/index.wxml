@@ -1,0 +1,10 @@
+<view class="box">
+  <block wx:for="{{ dataList }}" wx:key="{{ index }}">
+    <navigator url="/pages/detail/main?skill={{item.skill}}" class="mybox">
+      <!-- 图片 -->
+      <image src="{{ item.icon }}"></image>
+      <!-- 文字 -->
+      <view>{{ item.heroName }}</view>
+    </navigator>
+  </block>
+</view>

@@ -1,0 +1,5 @@
+.box {
+  width: 375rpx;
+  height: 200px;
+  background-color: pink;
+}

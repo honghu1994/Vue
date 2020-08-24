@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Vue学习第三天·axios及基础动画</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div id="app">
+        <h1>v-text</h1>
+        <p>我问：{{ newmsg }}</p>
+        <h1>v-html</h1>
+        <p v-html="msg">我问：{{ msg }}</p>
+        <h1>v-bind :</h1>
+        <p :title="msg">你好</p>
+        <h1>v-on @</h1>
+        <p><button @click="syaH">点我试试</button></p>
+        <h1>v-model</h1>
+        <p><input type="text" v-model="msg"/></p>
+    </div>
+  </body>
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+  const options = {
+    el: '#app',
+    data: {
+        msg:"<em>今天早饭你们都吃了</em>",
+        msg2:"哈哈"
+    },
+    updated() {
+      console.log("updated被执行了");
+    },
+    computed:{
+      newmsg(){
+        console.log("计算属性被执行了");
+        return "我来问："+this.msg2;
+      }
+    },
+    methods:{
+        syaH(){
+            alert(this.msg2)
+        }
+    }
+  };
+  const app = new Vue(options);
+</script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // var vue1 = {
+        //     data:{
+        //         name:"jack"
+        //     }
+        // }
+
+        // let p1 = vue1.data;
+        // let p2 = vue1.data;
+
+        // console.log(p1.name,p2.name);
+        // p1.name = "rose";
+
+        // console.log(p1.name,p2.name);
+
+        //false
+        // 只要执行一次{}，都代表重新创建一个新的对象
+        // console.log({ 'name': 'jack' } == { 'name': 'jack' });
+        // var obj1 = {'name':'jack'};
+        // var obj2 = {'name':'jack'};
+        // console.log(obj1 == obj2);
+
+
+        function f1(){
+
+            return { name:"jack" };
+        }
+        
+        var obj1 = f1(); //新对象
+        var obj2 = f1(); //新对象
+
+        console.log(obj1 == obj2);//false
+
+        obj1.name = "rose";
+        console.log(obj1.name, obj2.name);
+        
+        
+
+        // 面试遇到问题：
+        // 为什么vue的组件里的data必须是一个函数，再在函数里return对象？
+        // 如果不是函数，而是像普通的只是一个对象，那么就会导致让组件互相有影响
+        // 一个改了，其他用到这个组件的地方都会改
+        // 所以如果你是函数内return一个对象，就意味着每个组件都是自己独立的对象，到时候改了某一个，不会影响其他的
+        // 其实当时我也不知道有这么回事，我只是按照官方文档来用就好了，但是因为平时也喜欢再详细看一下文档加深理解
+        // 突然就看到官网说这个必须是函数，而且还告诉了我如果不是函数有什么影响
+        // 自己再对着钻研一下，发现真是那么回事，经过这个以后对对象是引用理解更深了
+
+
+    </script>
+</body>
+
+</html>

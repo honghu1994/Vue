@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>子传父</title>
+</head>
+
+<body>
+    <div id="app" style="border: 10px solid #ccc">
+        <h1>我是父组件</h1>
+        <div>msg: {{msg}}</div>
+        <son @sendval="getVal"></son>
+    </div>
+</body>
+<script src="./vue.min.js"></script>
+<script>
+    // 子传父：
+    //  步骤：
+    //      子传
+    //         子组件通过自定义事件 $emit 将参数交给父组件
+    //      父接
+    //          在父组件中组实现子组件的自定义事件，并设置对应的函数
+
+    Vue.component('son', {
+        template: `<div style="border: 10px solid red">
+            <h1>我是子组件</h1>
+            <div> msg: {{ msg }} </div>
+            <button @click="toFather">点我向父组件传参</button>
+        </div>`,
+        data() {
+            return {
+                msg: '我是子组件中的参数'
+            }
+        },
+        methods: {
+            toFather() {
+                this.$emit('sendval', this.msg)
+            }
+        }
+    })
+
+    new Vue({
+        el: '#app',
+        data: {
+            msg: ''
+        },
+        methods: {
+            getVal(value) {
+                this.msg = value
+            }
+        }
+    })
+
+</script>
+
+</html>

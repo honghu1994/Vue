@@ -1,0 +1,3 @@
+<!--pages/input/main.wxml-->
+<text>我是input页面</text>
+<input bindinput="fn" value="{{text}}"></input>

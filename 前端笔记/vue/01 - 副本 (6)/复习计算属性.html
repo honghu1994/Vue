@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        计算属性基本用法：
+            概念：有些属性值需要经过一定的计算（操作）来得到值，那么就可以用计算属性
+
+            特点：在使用的时候，跟普通属性一样，但是本质上它其实是一个函数，最终显示什么就看它返回什么
+     -->
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model='msg'>
+        <h3>您输入内容里包含a的个数：{{ aLen }}</h3>
+    </div>
+
+    <script src="./vue.js"></script>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+
+                msg: '',
+            },
+
+            computed: {
+                
+                length(){
+                    // 返回的msg的长度
+                    return this.msg.length;
+                },
+
+                aLen(){
+
+                   //经过计算
+                   let count = 0;
+                   for(let i = 0; i < this.msg.length; i++){
+
+                       if(this.msg[i] == 'a'){
+
+                           //有一个，计数+1
+                           count++;
+                       }
+                   }
+                
+                   return count;
+                }
+            },
+        })
+    </script>
+</body>
+</html>

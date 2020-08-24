@@ -1,0 +1,97 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false,
+		"coverView": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.8.1",
+	"appid": "wx5512db1ed90b3a86",
+	"projectname": "01base",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 6,
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/01pulldown/main",
+					"pathName": "pages/01pulldown/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/05pulldown/main",
+					"pathName": "pages/05pulldown/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/02pulldowndemo/main",
+					"pathName": "pages/02pulldowndemo/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/06pulldowndemo/main",
+					"pathName": "pages/06pulldowndemo/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/03reachButton/main",
+					"pathName": "pages/03reachButton/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "pages/07reachButtom/main",
+					"pathName": "pages/07reachButtom/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/08reachButtom/main",
+					"pathName": "pages/08reachButtom/main",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

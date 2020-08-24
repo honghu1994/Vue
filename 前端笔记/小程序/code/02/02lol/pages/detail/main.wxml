@@ -1,0 +1,42 @@
+<!-- 轮播图 -->
+<swiper class="myswiper" circular indicator-dots autoplay interval="2000" duration="200">
+  <block wx:for="{{obj.bgs}}" wx:key="{{ index }}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" height="150" />
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 内容 -->
+<view class="box">
+  <view class="left">
+    <!-- 称号 -->
+    <view class="nickname">{{ obj.title }}</view>
+    <!-- 名称 -->
+    <view class="name">{{ obj.name }}</view>
+    <!-- 定位 -->
+    <view class="tag">
+      <text wx:for="{{obj.tags}}" wx:key="{{index}}">{{item}}</text>
+    </view>
+    <view class="ab">
+      <view class="ab-item">
+        <view>生存能力：</view>
+        <progress stroke-width="10" activeColor="#20c76d" percent="{{obj.Ability.life}}" />
+      </view>
+      <view class="ab-item">
+        <view>物理攻击：</view>
+        <progress stroke-width="10" activeColor="#f2c700" percent="{{obj.Ability.physical}}" />
+      </view>
+      <view class="ab-item">
+        <view>魔法攻击：</view>
+        <progress stroke-width="10" activeColor="#f6a201" percent="{{obj.Ability.magic}}" />
+      </view>
+      <view class="ab-item">
+        <view>操作难度：</view>
+        <progress stroke-width="10" activeColor="#c78cfd" percent="{{obj.Ability.difficulty}}" />
+      </view>
+    </view>
+  </view>
+  <view class="right">
+    {{ obj.story }}
+  </view>
+</view>

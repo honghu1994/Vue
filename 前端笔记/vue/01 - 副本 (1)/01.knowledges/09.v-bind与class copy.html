@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+     #app>div{
+       width:100px;
+       height: 100px;
+       margin:10px;
+       border:1px solid #666; 
+     }
+     .red{
+       background-color: red;
+     }
+     .green{
+       background-color: green;
+     }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div :class="bgRed"></div>
+    <div :class="isRed?'red':'green'" @click="isRed=!isRed"></div>
+    <div :class="{green:isGreen}" @click="isGreen=!isGreen"></div>
+  </div>
+  <script src="./lib/vue.js"></script>
+  <script>
+    // let obj={
+    //   green:isGreen
+    // }
+
+     new Vue({
+       el:'#app',
+       data:{
+        bgRed:'red',
+        isRed:true,
+        isGreen:true
+       }
+     })
+  </script>
+</body>
+</html>

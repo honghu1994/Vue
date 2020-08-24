@@ -1,0 +1,6 @@
+<!--pages/03nav/main.wxml-->
+<view>声明式导航</view>
+<navigator url="/pages/03-1nav/main">去03-1页面</navigator>
+
+<view>编程式</view>
+<view bindtap="fn">去03-1页面</view>

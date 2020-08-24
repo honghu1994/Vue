@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/input/main",
+    "pages/detail/main",
+    "pages/home/main",
+    "pages/me/main",
+    "pages/carbuy/main",
+    "pages/cate/main"
+  ],
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#f00",
+    "backgroundColor": "#ccc",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/main",
+        "text": "首页",
+        "iconPath": "/imgs/icon_home@3x.png",
+        "selectedIconPath": "/imgs/icon_home_active@3x.png"
+      },
+      {
+        "pagePath": "pages/cate/main",
+        "text": "分类",
+        "iconPath": "/imgs/icon_home@3x.png",
+        "selectedIconPath": "/imgs/icon_home_active@3x.png"
+      },
+      {
+        "pagePath": "pages/carbuy/main",
+        "text": "购物车",
+        "iconPath": "/imgs/icon_home@3x.png",
+        "selectedIconPath": "/imgs/icon_home_active@3x.png"
+      },
+      {
+        "pagePath": "pages/me/main",
+        "text": "我的",
+        "iconPath": "/imgs/icon_home@3x.png",
+        "selectedIconPath": "/imgs/icon_home_active@3x.png"
+      }
+    ]
+  },
+
+
+
+ 
+
+  "sitemapLocation": "sitemap.json"
+}

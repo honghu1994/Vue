@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父传子</title>
+</head>
+
+<body>
+    <div id="app" style="border: 10px solid #ccc">
+        <h1>我是父组件</h1>
+        <son1></son1>
+        <son2></son2>
+    </div>
+</body>
+<script src="./vue.min.js"></script>
+<script src="./bus.js"></script>
+<script>
+    // bus
+
+    Vue.component('son1', {
+        template: `<div style="border: 10px solid red">
+            <h1>我是子组件1</h1>
+            <div> msg: {{ msg }} </div>
+            <button @click="toSon2">点我向son2传参</button>
+        </div>`,
+        data() {
+            return {
+                msg: '我是子组件1中的参数'
+            }
+        },
+        methods: {
+            toSon2() {
+                bus.$emit('fn', this.msg)
+            }
+        }
+    })
+    Vue.component('son2', {
+        template: `<div style="border: 10px solid red">
+            <h1>我是子组件2</h1>
+            <div> msg: {{ msg }}</div>
+        </div>`,
+        data() {
+            return {
+                msg: ''
+            }
+        },
+        mounted() {
+            bus.$on('fn', value => {
+                this.msg = value
+            })
+        }
+    })
+
+    new Vue({
+        el: '#app'
+    })
+
+</script>
+
+</html>

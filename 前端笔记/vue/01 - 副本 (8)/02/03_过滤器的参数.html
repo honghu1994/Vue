@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        过滤器本质上也是函数，既然是函数，就可以传递参数
+
+        但是要知道，过滤器里的第一个参数永远都是左边的值
+        从第二个开始，才是你传递的参数数据
+
+
+        坑点：
+            过滤器里最好不用this，因为过滤器里的this是window
+     -->
+</head>
+
+<body>
+    <div id="app">
+
+        <h1>{{ food | cook('油炸','辣椒') }}</h1>
+    </div>
+
+    <script src="./lib/vue.js"></script>
+
+    <script>
+        new Vue({
+
+            el: "#app",
+
+            data: {
+
+                food: "榴莲"
+            },
+           
+
+            filters: {
+                cook(value, doSome,xx) {
+
+                    console.log(this);
+                    
+                    return doSome + value + xx;
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js 的防抖</title>
+    <style>
+        .box {
+            width: 600px;
+            height: 2000px;
+            background-color: pink;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    // 防抖：
+    //  持续触发时，不用理会
+    //  停止一段时间后才执行: 500
+
+    // 定义一个定时器
+    let timer = null
+
+    // 给页面添加滚动事件
+    window.onscroll = function () {
+        // 判断，如果持续触发时，需要重置定时器
+        if (timer) {
+            clearTimeout(timer)
+        }
+        timer = setTimeout(() => {
+            console.log('onscroll')
+        }, 500)
+    }
+
+</script>
+
+</html>

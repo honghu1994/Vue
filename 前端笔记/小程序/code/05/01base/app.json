@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/08reachButtom/main",
+    "pages/07reachButtom/main",
+    "pages/06pulldowndemo/main",
+    "pages/05pulldown/main",
+    "pages/03reachButton/main",
+    "pages/02pulldowndemo/main",
+    "pages/04reachButtondemo/main",
+    "pages/01pulldown/main"
+   
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "sitemapLocation": "sitemap.json"
+}

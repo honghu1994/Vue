@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        串联过滤器：把多个过滤器都用起来
+
+        用得少
+     -->
+</head>
+
+<body>
+    <div id="app">
+
+        <h1>{{ msg | jump | rap | basketBall}}</h1>
+    </div>
+
+    <script src="./lib/vue.js"></script>
+
+    <script>
+        new Vue({
+
+            el: "#app",
+
+            data: {
+
+                msg: "唱"
+            },
+
+            filters: {
+
+                jump(value) {
+
+                    return value + "跳"
+                },
+
+                rap(value){
+                    console.log(value); //唱跳
+                    return value + 'rap'
+                },
+
+                basketBall(value){
+
+                    console.log(value);
+                    return value + "吃篮球"
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

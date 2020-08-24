@@ -1,0 +1,131 @@
+.myswiper {
+  width: 100%;
+  height: 720rpx;
+}
+.myswiper image {
+  width: 100%;
+  height: 720rpx;
+}
+.mess {
+  padding: 0 16rpx;
+  border-bottom: 20rpx solid #f4f4f4;
+}
+.mess .price {
+  height: 120rpx;
+  line-height: 120rpx;
+  color: #eb4450;
+  font-size: 20px;
+}
+.mess .word {
+  display: flex;
+  align-items: center;
+}
+.mess .word .left {
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  padding-right: 50rpx;
+  border-right: 1px solid #ccc;
+}
+.mess .word .right {
+  width: 150rpx;
+  text-align: center;
+  color: #666;
+  position: relative;
+}
+.mess .word .right span {
+  font-size: 30px;
+}
+.mess .word .right button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.mess .send {
+  color: #666;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.sales {
+  height: 196rpx;
+  border-bottom: 20rpx solid #f4f4f4;
+}
+.sales .item {
+  height: 98rpx;
+  line-height: 98rpx;
+  padding-left: 16rpx;
+  font-weight: 700;
+}
+.sales .item span {
+  font-weight: 400;
+  margin-left: 20rpx;
+}
+.jieshao {
+  padding: 0px 10rpx;
+}
+.jieshao .nav {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+}
+.jieshao .nav .name {
+  text-align: center;
+  flex: 1;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+.jieshao .nav .active {
+  border-bottom: 10rpx solid #ff2d4a;
+  color: #ff2d4a;
+}
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 98rpx;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+}
+.bottom .fuke {
+  position: relative;
+}
+.bottom .fuke button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.bottom .fuke,
+.bottom .cart {
+  flex: 2;
+  color: #999999;
+  font-size: 14px;
+}
+.bottom .addCart,
+.bottom .buy {
+  height: 98rpx;
+  line-height: 98rpx;
+  flex: 3;
+  background-color: #f4b73f;
+  color: #fff;
+}
+.bottom .buy {
+  background-color: #eb4450;
+}
+page {
+  padding-bottom: 98rpx;
+}
+.colorRed {
+  color: #ff2d4a;
+}
+.colorBlack {
+  color: #97989c;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .green{
+        background-color: green;
+      }
+      .gray{
+        background-color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="(movie,index) in movieList">
+          <span v-if="index%3===0" class="green">{{movie}}--{{index}}</span>
+          <span v-else-if="index%3===1" class="gray">{{movie}}--{{index}}</span>
+          <span v-else>{{movie}}--{{index}}</span>
+        </li>
+      </ul>
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          movieList:[
+            '哪吒',
+            '我不是药神',
+            '复仇者联盟1',
+            '复仇者联盟2',
+            '复仇者联盟3',
+            '复仇者联盟4',
+            '权力的游戏1',
+            '权力的游戏2',
+            '权力的游戏3',
+            '权力的游戏4',
+            '权力的游戏5',
+            '权力的游戏6',
+            '权力的游戏7',
+            '权力的游戏8',
+          ]
+        }
+      });
+    </script>
+  </body>
+</html>

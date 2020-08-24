@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body></body>
+</html>
+<script src="./lib/vue.js"></script>
+<script src="./lib/axios.js"></script>
+<script src="./lib/jquery.min.js"></script>
+
+<script>
+  //如果说我们使用ajax来请求ABCD四个相互依赖的请求
+  /*
+    $.ajax({
+        url:"http://wthrcdn.etouch.cn/weather_mini?city=深圳",
+        type:"get",
+        dataType:"json",
+        success: (data)=>{
+            console.log(data)
+
+            $.ajax({
+                url:"http://wthrcdn.etouch.cn/weather_mini?city=长沙",
+                type:"get",
+                dataType:"json",
+                success: (data)=>{
+                    console.log(data)
+
+                    $.ajax({
+                        url:"http://wthrcdn.etouch.cn/weather_mini?city=武汉",
+                        type:"get",
+                        dataType:"json",
+                        success: (data)=>{
+                            console.log(data)
+                        }
+                    })
+
+                }
+            })
+
+        }
+    })
+  */
+  /*
+  let randomNum = 0;
+  //这里是第一次异步执行
+  setTimeout(function() {
+    randomNum = Math.random()
+    if (randomNum > 0.5) {
+
+        console.log("1>:"+randomNum);
+        //这里是第2次异步执行，并且是依赖返回的值大于0.5才进行
+        setTimeout(function() {
+            randomNum = Math.random()
+            if (randomNum > 0.5) {
+                console.log("2>:"+randomNum);
+            
+            } else {
+                console.log("2<:"+randomNum);
+            
+            }
+        }, 1000);
+
+    } else {
+        
+        //这里是第2次异步执行，并且是依赖返回的值小于0.5才进行
+        console.log("<:"+randomNum);
+        setTimeout(function() {
+            randomNum = Math.random()
+            if (randomNum > 0.5) {
+                console.log("2>:"+randomNum);
+            
+            } else {
+                console.log("2<:"+randomNum);
+            
+            }
+        }, 1000);
+    }
+  }, 1000);
+*/
+
+  //这里是promise的基础用法
+  
+const mp = new Promise(function(resole, reject) {
+    let randomNum = Math.random();
+    setTimeout(function() {
+      if (randomNum > 0.5) {
+        resole(randomNum);
+      } else {
+        reject(randomNum);
+      }
+    }, 1000);
+  });
+
+  mp.then(data => {
+    console.log('data:' + data);
+  }).catch(err => {
+    console.log('err:' + err);
+  });
+  
+
+  //这里是使用链式调用的方法来实现我们期望的ABCD依赖结果
+  function numCheck() {
+    return new Promise(function(resole, reject) {
+      let randomNum = Math.random();
+      setTimeout(function() {
+        if (randomNum > 0.5) {
+          resole(randomNum);
+        } else {
+          reject(randomNum);
+        }
+      }, 1000);
+    });
+  }
+
+  numCheck()
+    .then(data => {
+      console.log('1>:' + data);
+      return numCheck();
+    })
+    .catch(err => {
+      console.log('1<:' + err);
+      return numCheck();
+    })
+    .then(data => {
+      console.log('2>:' + data);
+      return numCheck();
+    })
+    .catch(err => {
+      console.log('2<:' + err);
+      return numCheck();
+    })
+    .then(data => {
+      console.log('3>:' + data);
+      return numCheck();
+    })
+    .catch(err => {
+      console.log('3<:' + err);
+      return numCheck();
+    })
+    .then(data => {
+      console.log('4>:' + data);
+    })
+    .catch(err => {
+      console.log('4<:' + err);
+    });
+</script>

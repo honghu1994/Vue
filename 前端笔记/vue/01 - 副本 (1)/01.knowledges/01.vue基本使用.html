@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container">
+      <!-- art template -->
+      {{ message }}
+      <h2>{{num*67}}</h2>
+      <h2>{{isRed?'red':''}}</h2>
+      <!-- <h2>{{var PI=3.141592653}}</h2> -->
+    </div>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 jquery.js 更多的错误信息提示-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- 生产环境版本，优化了尺寸和速度 jquery.min.js 压缩过的 生产环境 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <script>
+      
+      /*
+      el:选择器 关联到Vue管理的容器
+      data里面的属性通过{{}}渲染
+      {{js表达式}} js表达式必须返回一个值
+      */
+      var app = new Vue({
+        el: "#container",
+        data: {
+          message: "Hello Vue!",
+          num:99,
+          isRed:true
+        }
+      });
+    </script>
+  </body>
+</html>

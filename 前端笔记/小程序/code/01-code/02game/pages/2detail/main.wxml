@@ -1,0 +1,2 @@
+<!--pages/2detail/main.wxml-->
+<view> 英雄技能:{{skill}}</view>

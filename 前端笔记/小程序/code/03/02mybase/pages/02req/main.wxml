@@ -1,0 +1,4 @@
+<!--pages/02req/main.wxml-->
+<!-- <text>pages/02req/main.wxml</text> -->
+<button bindtap="setRequest">点我发异步请求</button>
+{{title}}

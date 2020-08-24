@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width= , initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      h2{
+        text-align: center;
+
+      }
+      body{
+        text-align: center;
+      }
+      input{
+        width: 300px;
+        height: 30px;
+        border-radius: 5px;
+        font-size: 22px;
+        padding-left: 10px;
+        outline: none;
+        border: 1px solid #000;
+      }
+      .items{
+        list-style: none;
+        padding: 0;
+        width: 300px;
+        margin: 0 auto;
+      }
+      .items .item{
+        font-size: 25px;
+        text-align: left;
+        cursor:pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 模板 -->
+    <div id="app">
+      <h2>小黑记事本</h2>
+      <input type="text"  placeholder="请输入要记录的内容" v-model="inputVal" @keyup.enter="addTodo"/>
+      <ul class='items'>
+        <li class='item' v-for="(todo,index) in todoList" @dblclick="delTodo(index)">{{todo}}</li>
+      </ul>
+    </div>
+  </body>
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 编码 -->
+<script>
+  /*
+  1.展示列表
+   1. 列表数组 todoList:['吃饭']
+   2. v-for="元素别名 in 数组"
+  2. 输入内容，回车，添加任务
+    1. 接受用用户的输入 v-model:inputVal
+    2. @keyup.enter:addTodo
+    3. 数组.push()
+  3.双击删除
+   1. @dblclick:delTodo(index)
+   2. index来自v-for
+   3. 数组.splice(从哪一项开始删除,删除多少项)
+
+  */
+  // 创建Vue实例
+  var app = new Vue({
+    el:"#app",
+    data:{
+      // 列表数组
+      todoList:[
+        '吃饭饭',
+        '睡觉觉',
+        '写代码'
+      ],
+      // 用户输入的任务
+      inputVal:''
+
+    },
+    methods: {
+      addTodo(){
+        //非空判断
+        if(this.inputVal===''){
+          alert('哥们，写点啥呗!')
+          return
+        }
+        this.todoList.push(this.inputVal)
+        //清空
+        this.inputVal=''
+      },
+      // 删除任务
+      delTodo(index){
+        this.todoList.splice(index,1)
+      }
+    },
+  })
+</script>

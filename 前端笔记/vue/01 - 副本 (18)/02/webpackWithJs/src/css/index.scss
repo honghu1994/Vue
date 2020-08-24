@@ -1,0 +1,25 @@
+$myColor: orange;
+
+// scss和less的语法几乎都一样
+// 区别在于变量声明，在scss里变量声明是$
+body{
+
+    border:2px dashed black;
+
+    h1{
+
+        color:$myColor;
+        border:1px solid black;
+
+        &:hover{
+
+            transition: all 1s;
+            background-color: #0094ff;
+        }
+    }
+
+    h3{
+
+        color:$myColor;
+    }
+}

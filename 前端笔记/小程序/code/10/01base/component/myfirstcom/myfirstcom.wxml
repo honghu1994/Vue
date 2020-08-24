@@ -1,0 +1,2 @@
+<view class="myview" bindtap="fn">{{ abc }}</view>
+<button bindtap="passtopage">给页面传参</button>

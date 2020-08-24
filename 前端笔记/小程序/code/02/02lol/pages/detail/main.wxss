@@ -1,0 +1,54 @@
+page {
+  background-color: #363636;
+}
+.myswiper {
+  width: 100%;
+}
+.myswiper image {
+  width: 100%;
+}
+.box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  box-sizing: border-box;
+  color: white
+}
+.box .left {
+  flex: 1;
+}
+.box .left .nickname {
+  font-size: 16px;
+  font-weight: 700;
+}
+.box .left .name {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 40px;
+}
+.box .left .tag text {
+  font-size: 12px;
+  display: inline-block;
+  padding: 3px 10px;
+  background-color: #0c9c7d;
+  border-radius: 5px;
+  margin-right: 7px;
+}
+.box .left .ab  {
+  padding: 0 5px;
+}
+.box .left .ab .ab-item {
+  margin-top: 6px;
+  display: flex;
+}
+.box .left .ab .ab-item view {
+  font-size: 12px;
+}
+.box .left .ab .ab-item progress {
+  flex: 1;
+}
+.box .right {
+  flex: 1;
+  font-size: 12px;
+}

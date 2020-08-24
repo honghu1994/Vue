@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/04my/main",
+    "pages/03nav/main",
+    "pages/03-1nav/main",
+    "pages/01nav/main",
+    "pages/02passval/main",
+    "pages/00page/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

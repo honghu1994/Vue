@@ -1,0 +1,3 @@
+<map id="map" longitude="{{ longitude  }}" latitude="{{ latitude }}" scale="14" markers="{{marks}}" show-location>
+</map>
+<input class="search" bindconfirm="search"></input>

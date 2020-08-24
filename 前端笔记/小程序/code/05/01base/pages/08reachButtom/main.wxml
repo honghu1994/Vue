@@ -1,0 +1,6 @@
+<!--pages/08reachButtom/main.wxml-->
+<view class="box">
+  <view class="item" wx:for="{{dataList}}" wx:key="{{index}}">
+  {{item}}
+  </view>
+</view>

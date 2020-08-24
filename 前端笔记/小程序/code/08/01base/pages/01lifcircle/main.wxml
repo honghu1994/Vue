@@ -1,0 +1,6 @@
+<!-- 
+  页面什么时候会被卸载呢？
+    跳转
+ -->
+ <view bindtap="to02">跳转到 02(navigateTo)</view>
+ <view bindtap="redirect02">跳转到 02(redirectTo)</view>

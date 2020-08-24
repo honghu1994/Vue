@@ -1,0 +1,28 @@
+/* 书写样式 */
+
+.mybox {
+  text-align: center;
+}
+
+.mybox image {
+  width: 180px;
+  height: 180px;
+  border: 1px solid red;
+}
+
+.mybox .title {
+  line-height: 40px;
+}
+
+.mybox .title:hover {
+  color: red;
+}
+
+.mybox .mess {
+  line-height: 40px;
+
+  /* 超过一行... */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

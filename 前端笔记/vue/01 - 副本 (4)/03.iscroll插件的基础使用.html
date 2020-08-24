@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            border:1px solid #111;
+            height: 200px;
+            
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <button>点击增加元素</button>
+    </p>
+    <div id="box">
+        <ul>
+            <li>这是第1个LI元素</li>
+            <li>这是第2个LI元素</li>
+            <li>这是第3个LI元素</li>
+            <li>这是第4个LI元素</li>
+            <li>这是第5个LI元素</li>
+            <li>这是第6个LI元素</li>
+            <li>这是第7个LI元素</li>
+            <li>这是第8个LI元素</li>
+            <li>这是第9个LI元素</li>
+            <li>这是第10个LI元素</li>
+            <li>这是第11个LI元素</li>
+            <li>这是第12个LI元素</li>
+            <li>这是第13个LI元素</li>
+            <li>这是第14个LI元素</li>
+            <li>这是第15个LI元素</li>
+            <li>这是第16个LI元素</li>
+            <li>这是第17个LI元素</li>
+            <li>这是第18个LI元素</li>
+            <li>这是第19个LI元素</li>
+            <li>这是第20个LI元素</li>
+        </ul>
+
+    </div>
+    <script src="./lib/iscroll.js"></script>
+    <script>
+        var myScroll = new IScroll('#box');
+        window.document.getElementsByTagName("button")[0].onclick = function(){
+            let li = document.createElement("li");
+            li.innerHTML = "这是一个特殊的li标签";
+            document.getElementsByTagName("ul")[0].appendChild(li);
+            myScroll.refresh();
+        }
+    </script>
+</body>
+</html>

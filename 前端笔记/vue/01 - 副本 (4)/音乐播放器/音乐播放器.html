@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./lib/my.css">
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="play_wrap" id="player">
+
+      <!-- 顶部搜索栏目 -->
+      <div class="search_bar">
+        <img src="images/player_title.png" alt="" />
+        <input type="text" v-model="searchMusic" @keyup.enter="searchThisMusic()" />
+        <img src="./images/zoom.png" alt="" class="search_icon" @click="searchThisMusic()">
+      </div>
+
+      <div class="center_con">
+
+        <!-- 左边保持当前歌曲列表 -->
+        <div class="song_wrapper" ref="songBox">
+          <ul class="song_list">
+            <li v-for="music in musicList" @dblclick="playMusic(music.id)">
+              {{ music.name }}
+            </li>
+          </ul>
+        </div>
+
+        <!-- 中间显示播放效果 -->
+        <div class="player_con">
+          <!-- 黑胶碟片上的撞针 -->
+          <img src="images/player_bar.png" class="play_bar" :class="{ playing: isPlay }" />
+          <!-- 黑胶碟片 -->
+          <img src="images/disc.png" class="disc autoRotate" :class="{ playing: isPlay }" />
+          <!-- 显示当前歌曲的封面 -->
+          <img :src="musicPic" class="cover autoRotate" :class="{ playing: isPlay }" />
+        </div>
+
+        <!-- 右边显示评论列表 -->
+        <div class="comment_list" ref="comref">
+          <div>
+            <dl v-for="comment in commentList">
+              <dt>
+                <img :src="comment.user.avatarUrl" alt="" />
+              </dt>
+              <dd class="name">{{ comment.user.nickname }}</dd>
+              <dd class="detail">
+                {{  comment.content }}
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <!-- 底部音乐播放栏目 -->
+      <div class="audio_con">
+        <audio @play="mplay()" @pause="mpause()" controls autoplay loop :src="musicSrc" class="myaudio"></audio>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
+<script src="./lib/vue.js"></script>
+<script src="./lib/axios.js"></script>
+<script src="./lib/iscroll.js"></script>
+<script>
+  const app = new Vue({
+    el: ".wrap",
+    data: {
+      //搜索歌曲的关键字
+      searchMusic: "",
+      //获取歌曲的列表
+      musicList: [],
+      //当前播放歌曲的src
+      musicSrc: "",
+      //当前播放歌曲的封面 src
+      musicPic: "",
+      //当前歌曲的评论列表
+      commentList: [],
+      //平滑滚动的实例化对象 用来保存 音乐列表的相关
+      myScroll: null,
+      //平滑滚动的实例化对象，用来保存 评论列表的相关
+      comScroll: null,
+      //当前播放的状态
+      isPlay: false
+    },
+    mounted() {
+      this.comScroll = new IScroll(this.$refs.comref, {
+        scrollbars: true
+      });
+      this.myScroll = new IScroll(this.$refs.songBox);
+    },
+    updated() {
+      this.myScroll.refresh();
+      //这个地方放着好像不太合适？
+      //this.comScroll.refresh();
+    },
+    methods: {
+      //根据我们输入的关键字 查询歌曲列表信息
+      searchThisMusic() {
+        axios.get("https://autumnfish.cn/search?keywords=" + this.searchMusic)
+          .then(data => {
+            this.musicList = data.data.result.songs;
+          })
+      },
+      //双击音乐，播放当前音乐、获取当前歌曲的封面 
+      playMusic(mid) {
+        //播放当前音乐其实很简单，就是得到src 然后动态的bind到audio标签里面即可
+        axios.get("https://autumnfish.cn/song/url?id=" + mid)
+          .then(data => {
+            console.log(data.data.data[0].url)
+            this.musicSrc = data.data.data[0].url;
+          })
+        axios.get("https://autumnfish.cn/song/detail?ids=" + mid)
+          .then(data => {
+            console.log(data.data.songs[0].al.picUrl)
+            this.musicPic = data.data.songs[0].al.picUrl;
+          })
+        //获取当前歌曲的最热评论
+        axios.get("https://autumnfish.cn/comment/music?limit=1&id=" + mid)
+          .then(data => {
+            this.commentList = data.data.hotComments;
+            /* setTimeout(() => {
+              this.comScroll.refresh();
+            }, 100) */
+            this.$nextTick(() => {
+              this.comScroll.refresh();
+            })
+          })
+
+      },
+      mplay() {
+        this.isPlay = true;
+        console.log("play...");
+      },
+      mpause() {
+        this.isPlay = false;
+        console.log("pause...");
+      }
+    }
+  })
+</script>

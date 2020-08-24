@@ -1,0 +1,14 @@
+/* pages/01changeImg/main.wxss */
+.mybox {
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mybox image {
+  width: 180px;
+  height: 180px;
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./lib/my.css">
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="play_wrap" id="player">
+
+      <!-- 顶部搜索栏目 -->
+      <div class="search_bar">
+        <img src="images/player_title.png" alt="" />
+        <input type="text" v-model="searchMusic" @keyup.enter="searchThisMusic()" />
+        <img src="./images/zoom.png" alt="" class="search_icon" @click="searchThisMusic()">
+      </div>
+
+      <div class="center_con">
+
+        <!-- 左边保持当前歌曲列表 -->
+        <div class="song_wrapper" ref="songBox">
+          <ul class="song_list">
+            <li v-for="music in musicList" @dblclick="playMusic(music.id)">
+              {{ music.name }} -- {{ music.artists[0].name }}
+            </li>
+          </ul>
+        </div>
+
+        <!-- 中间显示播放效果 -->
+        <div class="player_con">
+          <!-- 黑胶碟片上的撞针 -->
+          <img src="images/player_bar.png" class="play_bar" :class="{ playing: isPlay }" />
+          <!-- 黑胶碟片 -->
+          <img src="images/disc.png" class="disc autoRotate" :class="{ playing: isPlay }" />
+          <!-- 显示当前歌曲的封面 -->
+          <img :src="musicPic" class="cover autoRotate" :class="{ playing: isPlay }" />
+        </div>
+
+        <!-- 右边显示评论列表 -->
+        <div class="comment_list" ref="comref">
+          <div>
+            <dl v-for="comment in commentList">
+              <dt>
+                <img :src="comment.user.avatarUrl" alt="" />
+              </dt>
+              <dd class="name">{{ comment.user.nickname }}</dd>
+              <dd class="detail">
+                {{  comment.content }}
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <!-- 底部音乐播放栏目 -->
+      <div class="audio_con">
+        <audio @play="mplay()" @pause="mpause()" controls autoplay loop :src="musicSrc" class="myaudio"></audio>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
+<script src="./lib/vue.js"></script>
+<script src="./lib/axios.js"></script>
+<script src="./lib/iscroll.js"></script>
+<script>
+
+  const app = new Vue({
+    el: '.wrap',
+    data: {
+      searchMusic: '',
+      musicList: [],
+      musicSrc: '',
+      musicPic: '',
+      commentList: [],
+      myScroll: null,
+      comScroll: null,
+      isPlay: false
+    },
+    methods: {
+      searchThisMusic() {
+        axios.get('https://autumnfish.cn/search?keywords=" + this.searchMusic')
+          .then(data => {
+            console.log(data);
+            this.musicList = data.data.result.songs;
+          })
+      },
+      playMusic(mid) {
+        axios.get("https://autumnfish.cn/song/url?id=" + mid)
+          .then(data => {
+            console.log(data.data.data[0].url)
+            this.musicSrc = data.data.data[0].url;
+          })
+        axios.get("https://autumnfish.cn/song/detail?ids=" + mid)
+          .then(data => {
+            console.log(data.data.songs[0].al.picUrl)
+            this.musicPic = data.data.songs[0].al.picUrl;
+          })
+        axios.get("https://autumnfish.cn/comment/music?limit=1&id=" + mid)
+          .then(data => {
+            this.commentList = data.data.hotComments;
+            /* setTimeout(() => {
+              this.comScroll.refresh();
+            }, 100) */
+            this.$nextTick(() => {
+              this.comScroll.refresh();
+            })
+          })
+      },
+      mplay() {
+        this.isPlay = true;
+        console.log("play...");
+      },
+      mpause() {
+        this.isPlay = false;
+        console.log("pause...");
+      }
+    },
+    mounted() {
+      this.comScroll = new IScroll(this.$refs.comref, {
+        scrollbars: true
+      });
+      this.myScroll = new IScroll(this.$refs.songBox);
+    },
+    updated() {
+      this.myScroll.refresh();
+      //这个地方放着好像不太合适？
+      //this.comScroll.refresh();
+    },
+
+
+  })
+</script>

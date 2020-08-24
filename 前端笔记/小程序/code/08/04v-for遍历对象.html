@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>遍历数组</h1>
+        <ul>
+            <li v-for="(item, index) in list">{{ item }} ---- {{ index }}</li>
+        </ul>
+        <h1>遍历对象</h1>
+        <ul>
+            <li v-for="(value, key) in obj"> {{ value }} ---- {{ key }} </li>
+        </ul>
+    </div>
+</body>
+<script src="./vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            list: [1, 1, 1, 1, 1],
+            obj: {
+                name: 'xjj',
+                age: 19,
+                gender: '男'
+            }
+        }
+    })
+
+</script>
+
+</html>

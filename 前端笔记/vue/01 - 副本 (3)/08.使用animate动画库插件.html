@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Vue学习第三天·axios及基础动画</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <style>
+    .fade-enter-active , .fade-leave-active  {
+      animation: zoomOutLeft 5s ;
+    }
+    
+    .fade-enter {
+      opacity: 0;
+    }
+    .fade-leave-to {
+      opacity: 0;
+    }
+
+    @keyframes zoomOutLeft {
+      40% {
+        opacity: 1;
+        -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(42px, 0, 0);
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(42px, 0, 0);
+      }
+
+      to {
+        opacity: 0;
+        -webkit-transform: scale(0.1) translate3d(-2000px, 0, 0);
+        transform: scale(0.1) translate3d(-2000px, 0, 0);
+        -webkit-transform-origin: left center;
+        transform-origin: left center;
+      }
+    }
+
+    .zoomOutLeft {
+      -webkit-animation-name: zoomOutLeft;
+      animation-name: zoomOutLeft;
+    }
+  </style>
+  <body>
+    <div id="demo">
+      <button v-on:click="show = !show">
+        点击切换
+      </button>
+      <!--- 我们会根据 name 所定义的这个前缀，来声明对应class 这些class会在v-if v-show
+        操作的过程中动态的添加或者移除
+        -->
+      <transition name="fade">
+        <p v-if="show">我是蜡笔小新</p>
+      </transition>
+    </div>
+  </body>
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+  const options = {
+    el: '#demo',
+    data: {
+      //控制当前内容是否显示
+      show: true,
+    },
+    computed: {},
+    methods: {},
+  };
+  const app = new Vue(options);
+</script>

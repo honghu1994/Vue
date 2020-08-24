@@ -1,0 +1,19 @@
+<!-- 
+  在小程序中缓存数据使用 storage：
+    操作：
+      存储：
+        xjj 最帅
+      取值：
+      清除：
+ -->
+<view>数据的存储</view>
+<button bindtap="savestorage">点我向 storage 中存储数据</button>
+<view>数据的取值</view>
+<button bindtap="getstorage">点我得到storage中的数据</button>
+<view>数据的清除</view>
+<button bindtap="clearstorage">点我清除storage中的数据(remove)</button>
+<view>数据的清除</view>
+<button bindtap="ccstorage">点我清除storage中的数据(clear)</button>
+<view>注意点：storage 可以存储任意数据类型</view>
+<button bindtap="setObj">点我向storage中存储对象</button>
+<button bindtap="setArr">点我向storage中存储数组</button>

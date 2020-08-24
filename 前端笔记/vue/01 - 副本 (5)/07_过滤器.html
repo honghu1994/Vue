@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="msg" placeholder="请输入姓名">
+
+        <h1>您输入的名字是：{{ msg | formatName }}</h1>
+
+    </div>
+
+    <script src="./vue.js"></script>
+
+    <script>
+        new Vue({
+
+            el: "#app",
+            data: {
+                msg: ""
+            },
+
+            // 过滤器也是一个对象
+            filters:{
+
+                //里面写函数
+                formatName(value){
+                    
+                    // 如果你的msg含有狗屎，就把狗屎替换成黄金
+                    if( value.indexOf('狗屎') != -1 ){
+
+                        return value.replace('狗屎','黄金')
+
+                    }else if(value.indexOf('习近平') != -1){
+
+                        return '伟大的领袖！';
+                    }
+                    
+                    // 如果没有狗屎，就原样输出
+                    return value;
+                }
+                
+            }
+        })
+    </script>
+</body>
+
+</html>

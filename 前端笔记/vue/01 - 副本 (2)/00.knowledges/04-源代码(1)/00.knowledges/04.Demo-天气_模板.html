@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      li span {
+        font-size: 30px;
+      }
+      [v-cloak]{
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app" v-cloak>
+      <h2>天气查查查--{{city}}</h2>
+      <input type="text" placeholder="请输入查询的城市" v-model="city" @keyup.enter="queryWeather"/>
+      <ul>
+        <li v-for="item in forecastList">
+          {{item.date}} {{item.high}} {{item.low}} {{item.type}}
+          <span v-if="item.type.includes('云')">🌥️</span>
+          <span v-else-if="item.type.includes('雨')">🌧️</span>
+          <span v-else-if="item.type.includes('晴')">🌞</span>
+          <span v-else>🌫️</span>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 jquery.js -->
+<script src="./lib/vue.js"></script>
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+  /*
+  1.输入城市，显示城市
+    1. 获取用用户输入的城市 v-model:city
+    2. 显示城市{{city}}
+  2. 回车，查询天气信息
+    1.@keyup.enter:queryWeather
+    2.接口：http://wthrcdn.etouch.cn/weather_mini?city=深圳
+    3.$.ajax success拿数据
+  3.展示天气信息
+    1. data.forecastList
+    2. v-for
+  4.展示emoji表情
+   1. v-if v-else-if v-else
+   2. item.type.indexOf('云')  a.indexOf(b) 会返回b在a中的索引,否则-1 !=-1就是包含
+   3. a.includes(b) 包含
+  */
+   new Vue({
+     el:'#app',
+     data:{
+      // 用户输入的城市
+      city:'深圳',
+      // 天气信息数组
+      forecastList:[]
+     },
+     methods: {
+      //  查询天气
+      queryWeather(){
+        $.ajax({
+          url:`http://wthrcdn.etouch.cn/weather_mini?city=${this.city}`,
+          dataType:'json',
+          // success: function(res){
+            success:(res)=>{
+              console.log(res);
+              
+            console.log(res.data.forecast)
+            this.forecastList = res.data.forecast
+          }
+        })
+      }
+     },
+   })
+</script>

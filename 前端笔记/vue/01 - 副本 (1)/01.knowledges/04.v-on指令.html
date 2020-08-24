@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="button" value="点我呀" v-on:click="sayHello" @mouseover="overHandler"/>
+      <input type="button" value="简写" @click="sayHello" />
+      <input type="button" value="双击" @dblclick="sayHello" />
+      <input type="button" value="逼格" @click="bigger(76)"/>
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+      /*
+      v-on:事件名="事件处理方法"
+      简写 @事件名="事件处理方法"
+      事件名和原生相同 可以是 @click @dblclick @keyup @keydown @mouseover @mouseenter @mouseleave..
+      事件处理方法默认参数是事件对象
+      事件处理方法的传参和js注册事件没什么不同
+      */
+      
+      new Vue({
+        el: "#app",
+        data: {},
+        methods: {
+          sayHello(event) {
+            alert("长安十二时辰");
+            // console.log(event)
+          },
+          bigger(num){
+            alert(45*num)
+          },
+          overHandler(){
+            console.log('over')
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

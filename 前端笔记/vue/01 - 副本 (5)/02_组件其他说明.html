@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .mycom{
+            height:150px;
+            background-color: hotpink;
+            margin-bottom: 20px;
+            padding-top:20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+        <hello></hello>
+        <hello></hello>
+        <hello></hello>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+    <!-- 单独准备一个模板 -->
+    <script type="text/html" id='tpl1'>
+        <div class="mycom">
+            <button @click="changeMsg">点我啊</button>
+            <h3>{{msg}}</h3>
+        </div>
+    </script>
+
+
+    <script>
+
+        // 注册了一个组件
+        Vue.component('hello', {
+            
+            methods: {
+                changeMsg(){
+
+                    this.msg = '我修改了，哦！';
+                }
+            },
+            data(){  
+
+                return {
+                    msg:"msg"
+                }
+            },
+            template:'#tpl1'
+        })
+      
+        new Vue({
+            el:"#app"
+        })
+    </script>
+</body>
+</html>

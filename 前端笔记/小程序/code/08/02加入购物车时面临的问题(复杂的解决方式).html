@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 保存的数据
+    var goodsList = [
+        { id: 1, name: '电视', num: 1 },
+        { id: 2, name: '电饭煲', num: 1 },
+        { id: 3, name: '马桶盖', num: 1 }
+    ]
+    // 问题一：再次加入一条数据
+    // // 1.0 不存在
+    // var goodsA = { id: 4, name: '鼠标' }
+    // goodsList.push(goodsA)
+    // // 2.0 已存在 
+    // var goodsB = { id: 2, name: '电饭煲' }
+    // goodsList.push(goodsB)
+    // 解决办法一：给每个数据添加一个属性：用来计算对象数量
+    // 在加入之前先判断
+    // // 1.0 不存在
+    // var goodsA = { id: 4, name: '鼠标' }
+    // 2.0 已存在 
+    // var goodsA = { id: 2, name: '电饭煲' }
+    // let index = goodsList.length;
+    // for(var i = 0; i < index ; i++){
+    //     if (goodsList[i].id === goodsA.id) {
+    //         goodsList[i].num ++;
+    //         break;
+    //     } 
+    //     // 如果到了最后依旧没有相同的，就直接 push
+    //     if (i === goodsList.length - 1) {
+    //         goodsA.num = 1;
+    //         goodsList.push(goodsA)
+    //     }
+    // }
+    // console.log(goodsList)
+</script>
+
+</html>

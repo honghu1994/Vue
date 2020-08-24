@@ -1,0 +1,4 @@
+/* pages/input/main.wxss */
+input {
+  border: 1px solid #ccc;
+}

@@ -1,0 +1,6 @@
+<view class="box">
+  <view data-id="{{item.id}}" bindtap="toDetail" class="mybox" wx:for="{{ herosList }}" wx:key="{{ index }}">
+    <image src="{{item.iconUrl}}"></image>
+    <view>{{ item.name }}</view>
+  </view>
+</view>

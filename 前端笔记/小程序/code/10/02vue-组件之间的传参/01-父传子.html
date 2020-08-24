@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父传子</title>
+</head>
+
+<body>
+    <div id="app" style="border: 10px solid #ccc">
+        <h1>我是父组件</h1>
+        <div>
+            msg: {{ msg }}
+        </div>
+        <son v-bind:abc="msg"></son>
+    </div>
+</body>
+<script src="./vue.min.js"></script>
+<script>
+    // 父传子：
+    //  步骤：
+    //      父传
+    //          父组件中有一个参数，通过自定义属性传递给子组件
+    //      子接
+    //          通过 props 属性来进行接收
+
+    Vue.component('son', {
+        template: `<div style="border: 10px solid red">
+            <h1>我是子组件</h1>
+            <div>msg: {{ abc }}</div>
+        </div>`,
+        // props: ['abc']
+        // 对象
+        props: {
+            abc: {
+                type: String,
+                default: '默认值'
+            }
+        }
+    })
+
+    new Vue({
+        el: '#app',
+        data: {
+            msg: '我是父组件中的参数'
+        }
+    })
+
+</script>
+
+</html>

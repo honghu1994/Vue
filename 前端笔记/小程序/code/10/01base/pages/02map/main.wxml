@@ -1,0 +1,15 @@
+<!-- <view>使用腾讯地图</view> -->
+<!-- 
+  map: 地图组件
+    longitude： 经度
+    latitude：经度
+      作用：确定地图的中心点
+    scale：地图的缩放
+    markers：地图上的标记
+    show-location：在地图上显示位置
+
+  小程序中的地图没有提供搜索，规划路径...操作
+    只提供了：绘图，描点，定位。。。。
+ -->
+<map id="map" longitude="{{ longitude  }}" latitude="{{ latitude }}" scale="14" show-location>
+</map>

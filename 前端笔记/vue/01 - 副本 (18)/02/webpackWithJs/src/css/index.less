@@ -1,0 +1,23 @@
+@myColor: orange;
+
+body{
+
+    border:2px dashed black;
+
+    h1{
+
+        color:@myColor;
+        border:1px solid black;
+
+        &:hover{
+
+            transition: all 1s;
+            background-color: #0094ff;
+        }
+    }
+
+    h3{
+
+        color:@myColor;
+    }
+}

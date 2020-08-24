@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        /* 过渡动画 进入开始的时候的状态 这是一个时刻状态 */
+        .fade-enter{
+            opacity: 0;
+            transform: translateX(180px);
+        }
+
+        /* 过渡动画进入的过程执行的css动画 这个是一个时间段状态 */
+        .fade-enter-active{
+            transition: all 2s ease;
+        }
+
+        /* 过渡动画 进入动画结束的时候的状态 这是一个时刻状态 */
+        .fade-enter-to{
+            background: red;
+        }
+
+        /* 动画离开的时候的状态 这是一个时刻状态 */
+        .fade-leave{
+            background: red;
+        }
+
+        /* 这个是离开的时候执行的css动画过程 这是一个时间段状态 */
+        .fade-leave-active{
+            transition: all 2s ease;
+        }
+
+        /* 这个是离开结束的时候的一个状态，这是一个时刻状态 */
+        .fade-leave-to{
+            opacity: 0;
+            transform: translateX(180px);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="additem()">点击增加栏目</button>
+        <button @click="removeitem()">点击删除栏目</button>
+        <transition-group name="fade" tag="ul">
+            <li v-for="(item,index) in arr" :key="index">{{ item }}</li>
+        </transition-group>  
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                arr:[
+                    "蜡笔小新",
+                    "犬夜叉",
+                    "黑猫警长"
+                ]
+            },
+            methods: {
+                additem(){
+                    this.arr.push("凹凸曼")
+                },
+                removeitem(){
+                    this.arr.splice(-1,1);
+                }
+            },
+        })
+    </script>
+</body>
+</html>
+
+<!-- 
+    使用 transition-group 标签包裹 name 属性 自定义前缀 tag 定义包裹的外围标签
+    分组动画的本质其实还是 vue 动态的添加或者删除 class 类名
+    v-for key用来标识当前元素的唯一性 
+    触发条件是：动态的新增或者删除元素就会触发对应的当前元素的动画
+ -->

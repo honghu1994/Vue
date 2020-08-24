@@ -1,0 +1,3 @@
+<!--pages/home/index.wxml-->
+<text>pages/home/index.wxml</text>
+<view bindtap="toDetail">去detail</view>

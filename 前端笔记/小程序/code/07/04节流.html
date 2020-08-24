@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js 的节流</title>
+    <style>
+        .box {
+            width: 600px;
+            height: 2000px;
+            background-color: pink;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    // 节流：
+    //  持续触发事件，一段时间内也必须执行一次 ：
+    //      tm: 必须执行函数的间隔时间
+    //      fn: 要执行的逻辑代码
+
+    function jieliu(tm, fn) {
+        // 这段时间的开始时间
+        let beginTime = Date.now()
+        return function () {
+            // 得到当前时间
+            let nowTime = Date.now()
+            // 得到两个时间的时间差
+            let space = nowTime - beginTime
+            // 判断 时间间隔是否大于等于 tm 如果大于等于了，需要执行一次函数
+            if (space >= tm) {
+                fn()
+                // 重置开始时间
+                beginTime = Date.now()
+            }
+        }
+    }
+
+
+    // 给页面添加滚动事件
+    window.onscroll = jieliu(500, () => {
+        console.log('onscroll')
+    })
+
+</script>
+
+</html>

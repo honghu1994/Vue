@@ -1,0 +1,7 @@
+<view>使用自定义组件</view>
+<mycom></mycom>
+<view>页面给组件传参</view>
+<view>passToCom: {{ passToCom }}</view>
+<mycom abc="{{ passToCom }}"></mycom>
+<view>组件给页面传参</view>
+<mycom bindfn="getVale"></mycom>

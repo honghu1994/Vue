@@ -1,0 +1,3 @@
+<!-- 通过编程式导航跳转到 00 页面，同时传入参数 -->
+<!-- 小程序中参数的传递有自己固定的写法： data-xx="xx" -->
+<view data-name="xjj" bindtap="toPage00" >去 00page</view>

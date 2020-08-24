@@ -1,0 +1,10 @@
+<!--pages/01heros/main.wxml-->
+
+<view class="box">
+  <view data-id="{{item.id}}" bindtap="toDetail" wx:for='{{herosList}}' wx:key='{{index}}' class="mybox">
+
+      <image src="{{item.iconUrl}}"></image>
+      <view>{{ item.name }}</view>
+  </view>
+
+</view>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        img {
+            width: 100%;
+        }
+
+        .nav{
+
+            display: flex;
+            height: 120px;
+        }
+        .nav a{
+
+            flex:1;
+            background-color: #242424;
+            text-align: center;
+            line-height: 120px;
+            color:white;
+            text-decoration: none;
+        }
+
+        .nav a:hover{
+            background-color: #000000;
+        }
+        .nav img{
+
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <div class="nav">
+            <img src="images/logo.png" alt="">
+            <router-link to="/one">发现音乐</router-link>
+            <router-link to="/two">我的音乐</router-link>
+            <router-link to="/three">朋友</router-link>
+            <img src="images/right.png" alt="">
+        </div>
+
+        <!-- 用来显示组件的 -->
+        <router-view></router-view>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+
+    <script>
+
+        // 1. 准备组件
+        const one = { template: '<div> <img src="images/one.png"/></div>' }
+        const two = { template: '<div> <img src="images/two.png"/></div>' }
+        const three = { template: '<div> <img src="images/three.png"/></div>' }
+
+        // 2. 设置路由规则
+        const routes = [
+            { path: '/one', component: one },
+            { path: '/two', component: two },
+            { path: '/three', component: three },
+        ]
+
+        //3. 实例化路由对象
+        const router = new VueRouter({
+            routes
+        })
+
+        // 4. 实例化vue
+        new Vue({
+            el: "#app",
+            router
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>天知道</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/iconfont.css" />
+  <link rel="stylesheet" href="css/main2.css" />
+  <style>
+    .tem .iconfont {
+      font-size: 50px;
+    }
+
+    .list-enter-active,
+    .list-leave-active {
+      transition: all 1s;
+    }
+
+    .list-enter,
+    .list-leave-to {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap" id="app">
+
+    <div class="search_form">
+      <div class="logo"><img src="img/logo.png" alt="logo" /></div>
+      <div class="form_group">
+        <input type="text" class="input_txt" placeholder="请输入查询的天气" v-model.trim="city"
+          @keyup.enter="searchWeather('')" />
+        <button class="input_sub" :class="wstate" @click="searchWeather('')">
+          搜 索
+        </button>
+      </div>
+      <div class="hotkey">
+        <a href="javascript:;" @click="searchWeather('北京')">北京</a>
+        <a href="javascript:;" @click="searchWeather('上海')">上海</a>
+        <a href="javascript:;" @click="searchWeather('广州')">广州</a>
+        <a href="javascript:;" @click="searchWeather('深圳')">深圳</a>
+      </div>
+    </div>
+
+    <transition-group class="weather_list" name="list" tag="ul" v-on:after-enter="afterEnter">
+      <li v-for="(weather,index) in weatherList" :key="index" :style="{ 'transition-delay' :index*100+'ms' }">
+        <div class="info_type">
+          <span class="iconfont" v-if="weather.type.indexOf('雨') > -1">&#xe931;</span>
+          <span class="iconfont" v-if="weather.type.indexOf('晴') > -1">&#xe933;</span>
+          <span class="iconfont" v-if="weather.type.indexOf('阴') > -1">&#xe92d;</span>
+          <span class="iconfont" v-if="weather.type.indexOf('雪') > -1">&#xeb87;</span>
+          <span class="iconfont" v-if="weather.type.indexOf('云') > -1">&#xeb79;</span>
+          <span class="iconfont" v-if="weather.type.indexOf('雷') > -1">&#xeb77;</span>
+          <span class="iconfont" v-if="weather.type.indexOf('雹') > -1">&#xeb76;</span>
+          <span class="iconfont" v-if="weather.type.indexOf('雾') > -1">&#xeb75;</span>
+        </div>
+        <div class="info_temp">
+          高 <b>{{ weather.high.split(" ")[1] }}</b><br />低 {{ weather.low.split(" ")[1] }}
+        </div>
+        <div class="info_date">
+          <b>{{ city }}</b><span>{{ weather.date }}</span>
+        </div>
+      </li>
+    </transition-group>
+
+  </div>
+</body>
+
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="./js/vue.js"></script>
+<script src="./js/axios.js"></script>
+<script>
+  //设置一个参数
+  const option = {
+    el: "#app",
+    data: {
+      //搜索框双向数据绑定的属性
+      city: "",
+      //异步请求天气数据的过渡状态
+      wstate: {
+        loading: false
+      },
+      //显示天气的列表数据
+      weatherList: []
+    },
+    methods: {
+      afterEnter(el){
+        el.style="";
+      },
+      searchWeather(city) {
+        //我们根据传递过来的参数，来判断 用户是否是点击 对应的城市文字 ，如果是的话则给this.city赋值
+        if (city != "") {
+          this.city = city;
+        }
+        //在我们请求数据的过程中 显示对应的 loading 加载按钮
+        this.wstate.loading = true;
+        this.weatherList = [];
+        axios
+          .get("http://wthrcdn.etouch.cn/weather_mini?city=" + this.city)
+          .then(data => {
+            //根据返回数据的状态码来判断是否拿到了我们想要的天气数据，正常返回的话状态码 1000
+            if (data.data.status != 1000) {
+              //如果用户输入不合法的 关键字 无法查询到天气信息，则提示对应的信息
+              this.wstate.loading = false;
+              alert(data.data.desc);
+              return;
+            }
+            //设置一个 等待时间 让前面 this.weatherList = [] leave-active 有足够的时间
+            setTimeout(() => {
+              //将获取到的天气信息填充到我们设置的数据中
+              this.weatherList = data.data.data.forecast;
+              //数据请求成功后 隐藏对应的 loading 加载
+              this.wstate.loading = false;
+            }, 500)
+          });
+      }
+    }
+  };
+  const app = new Vue(option);
+</script>

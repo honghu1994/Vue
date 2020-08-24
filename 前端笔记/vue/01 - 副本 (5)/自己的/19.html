@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var vue1= {
+      data:{
+        name:'jack'
+      }
+    }
+    let p1 =vue1.data;
+    let p2 =vue1.data;
+    p1.name='rose'
+    console.log(p1.name,p2.name);
+    console.log({'name':'jack'}=={'name':'jack'});
+    var obj1={'name':'jack'}
+    var obj2={'name':'jack'}
+    console.log(obj1==obj2);
+    
+
+    function f1(){
+      return{name:'jack'};
+    }
+    var obj1=f1();
+    var obj2=f1();
+    console.log(obj1==obj2);
+    obj1.name='rose';
+    console.log(obj1.name,obj2.name);
+    
+    
+    </script>
+</body>
+</html>

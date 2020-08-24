@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Vue学习第三天·axios及基础动画</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>获取天气数据</h1>
+      <p><button @click="getWeatherData">点击查询天气数据</button></p>
+    </div>
+  </body>
+</html>
+<script src="./lib/vue.js"></script>
+<script src="./lib/axios.js"></script>
+<script>
+  const options = {
+    el: '#app',
+    data: {},
+    computed: {},
+    methods: {
+      getWeatherData() {
+        axios
+          .get('http://wthrcdn.etouch.cn/weather_mini?city=深圳')
+          .then(function(response) {
+            //成功执行的回调函数
+            console.log(response);
+          })
+          .catch(function(error) {
+            //失败执行的回调函数
+            console.log(error);
+          })
+          .finally(function() {
+            //完成以后执行的回调函数，总是会被执行
+          });
+
+        axios
+          .get('http://wthrcdn.etouch.cn/weather_mini?city=深圳')
+          .then(data => {
+              console.log(this)
+            console.log(data);
+
+
+            return axios.get('http://wthrcdn.etouch.cn/weather_mini?city=广州');
+          })
+          .then(data => {
+            console.log(data);
+
+
+            return axios.get('http://wthrcdn.etouch.cn/weather_mini?city=宝安');
+          })
+          .then(data => {
+            console.log(data);
+
+            
+            return axios.get('http://wthrcdn.etouch.cn/weather_mini?city=武汉');
+          })
+          .then(data => {
+            console.log(data);
+          });
+      },
+    },
+  };
+  const app = new Vue(options);
+</script>

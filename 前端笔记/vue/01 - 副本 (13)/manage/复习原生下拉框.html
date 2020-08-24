@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" value="" v-model="msg">
+
+
+    <select id="sel" v-model="uid">
+        <option value="apple">苹果</option>
+        <option value="banana">香蕉</option>
+        <option value="yali">鸭梨</option>
+    </select>
+
+    <input type="button" value="获取" id="btn">
+
+    <script>
+        //下拉框的value属性
+        var sel = document.getElementById('sel')
+
+        document.getElementById('btn').onclick = function(){
+
+            console.log(sel.value);
+
+            // 文本框.value;
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width= , initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>图片切换</title>
+    <style>
+      .title {
+        background-color: skyblue;
+        color: white;
+      }
+
+      img {
+        width: 200px;
+        height: 200px;
+        box-shadow: 0 0 20px hotpink;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 模板 -->
+    <div id="app">
+      <h2 class="title">图片切换</h2>
+      <img alt="" :src="imgList[index]" />
+      <br />
+      <input type="button" value="上一张" @click="pre" />
+      <input type="button" value="下一张" @click="next" />
+    </div>
+  </body>
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 编码 -->
+<script>
+  /*
+    1.展示图片
+      1. 图片数组 imgList:[img1,img2,img3,img4]
+      2. 数组下标 index:0
+      3. 显示图片 v-bind:src= imgList[index]
+    2.上一张和下一张的功能
+      1. 上一张 @click:pre index--
+      2. 下一张 @click:next index++
+    3. 图片循环展示
+      1.下一张的时候，最后一张，直接去到第一张
+      2.上一张的时候，第一一张，直接去到最后一张
+  */
+  // 创建Vue实例
+  var app = new Vue({
+    el: "#app",
+    data: {
+      // 图片数组
+      imgList: ["./img/01.png", "./img/02.png", "./img/03.png", "./img/boy.png", "./img/girl.png"],
+      // 数组下标
+      index: 0
+    },
+    methods: {
+      pre() {
+        // 上一张的时候，第一一张，直接去到最后一张
+        if(this.index===0){
+        // if(!this.index){
+          this.index= this.imgList.length-1
+          return
+        }
+        this.index--;
+      },
+      next() {
+        // 下一张的时候，最后一张，直接去到第一张
+        if(this.index===this.imgList.length-1){
+          this.index =0
+          return
+        }
+        this.index++;
+      }
+    }
+  });
+</script>

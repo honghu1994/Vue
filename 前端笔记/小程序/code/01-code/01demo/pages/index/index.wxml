@@ -1,0 +1,16 @@
+<!-- 存放结构 -->
+<!-- 书写案例：商品介绍 -->
+<!-- 注意点： wxml 中不能使用 html 中的标签 -->
+<!-- <div>
+  <img src="https://img.alicdn.com/imgextra/i1/693739777/TB2TW6MtwxlpuFjy0FoXXa.lXXa_!!693739777-0-daren.jpg_180x180xzq90.jpg_.webp" />
+  <div>ZIIIRO手表</div>
+  <div>采用现代设计，让时间显示犹如日食奇观重现，引爆眼球。</div>
+</div> -->
+<!-- 容器 -->
+<view class="mybox">
+  <!-- 图片 -->
+  <image src="https://img.alicdn.com/imgextra/i1/693739777/TB2TW6MtwxlpuFjy0FoXXa.lXXa_!!693739777-0-daren.jpg_180x180xzq90.jpg_.webp"></image>
+  <!-- 标题 -->
+  <view class="title">ZIIIRO手表</view>
+  <view class="mess">采用现代设计，让时间显示犹如日食奇观重现，引爆眼球。</view>
+</view>

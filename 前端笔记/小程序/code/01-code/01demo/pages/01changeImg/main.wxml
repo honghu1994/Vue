@@ -1,0 +1,6 @@
+<view class="mybox">
+  <!-- 图片 -->
+  <image src="{{ imgList[selectedIndex] }}"></image>
+</view>
+<!-- 下一张按钮 -->
+<button bindtap="fn">下一张</button>

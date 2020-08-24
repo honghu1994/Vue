@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/03mapdemo/main",
+    "pages/02map/main",
+    "pages/01usercomponent/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "没什么好说的，报上你的位置"
+    }
+  }
+}

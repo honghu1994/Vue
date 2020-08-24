@@ -1,0 +1,4 @@
+<!--pages/06pulldowndemo/main.wxml-->
+<!-- <text>pages/06pulldowndemo/main.wxml</text> -->
+<view>{{num}}</view>
+<button bindtap="addone">点我加一</button>

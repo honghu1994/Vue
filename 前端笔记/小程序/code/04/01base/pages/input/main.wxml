@@ -1,0 +1,4 @@
+<!-- 使用组件 input -->
+<view>使用组件 input</view>
+<!-- bindinput：键盘输入内容时触发 -->
+<input bindinput="fn" value="{{ text }}"></input>

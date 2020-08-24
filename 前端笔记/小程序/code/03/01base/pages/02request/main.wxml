@@ -1,0 +1,2 @@
+<button bindtap="setRequest">点我发送异步请求到服务器</button>
+{{title}}

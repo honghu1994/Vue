@@ -1,0 +1,18 @@
+page {
+  background-color: #576878;
+}
+.box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mybox {
+  width: 33.333%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.mybox image {
+  width: 100px;
+  height: 100px;
+}

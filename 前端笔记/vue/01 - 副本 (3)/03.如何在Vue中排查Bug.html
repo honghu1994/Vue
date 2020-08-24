@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Vue学习第三天·axios及基础动画</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div id="app">
+        <h1>{{message}}</h1>
+        <p v-for=" item in arr ">{{ item }}</p>
+    </div>
+  </body>
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+  const options = {
+    el: '#app',
+    data: {
+        message:"nihao",
+        arr:["蜡笔小新","犬夜叉","樱桃小丸子"]
+    },
+    computed:{},
+    methods:{}
+  };
+  const app = new Vue(options);
+</script>

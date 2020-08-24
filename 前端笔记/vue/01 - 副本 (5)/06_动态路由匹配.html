@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <router-link to="/one">去第一个</router-link>
+        <router-link to="/two">去第二个</router-link>
+        <router-link to="/three">去第三个</router-link> -->
+
+        <button @click="toOne">点我去第一个</button>
+        <button @click="toTwo">点我去第二个</button>
+        <button @click="$router.push('/three')">点我去第三个</button>
+
+        <router-view></router-view>
+
+    </div>
+
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+
+    <script>
+        const one = { template: '<div><h2>你传入的参数是：{{ $route.params.name }}</h2></div>' }
+        const two = { template: '<div>bar</div>' }
+        const three = { template: '<div>three</div>' }
+
+        const routes = [
+            { path:'/one/:name/:age',component:one},
+            { path:'/two',component:two},
+            { path:'/three',component:three},
+        ]
+
+        //实例化路由
+        const router = new VueRouter({
+            routes
+        })
+
+
+        new Vue({
+            el:"#app",
+            router,
+
+            methods: {
+                toOne(){
+
+                    //加判断条件，有的时候给你跳，有的时候不给跳
+                    //要用代码跳转到one组件
+                    this.$router.push('/one/rose/16')
+                },
+
+                toTwo(){
+
+                    this.$router.push('/two');
+                }
+            },
+        })
+    </script>
+</body>
+</html>

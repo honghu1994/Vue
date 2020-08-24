@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <xxoo></xxoo>
+
+    </div>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        // 注册组件
+        // 参数1：组件的id
+        // 参数2：一个对象，对象里写组件的特征（模板、方法、data数据）
+        Vue.component('xxoo', {
+            methods: {
+                doSome() {
+
+                    this.msg = '渣男马杀鸡';
+                }
+            },
+
+            // 组件里面的data必须是一个函数
+            // 函数里再返回一个对象，对象里就按以前那样写这个组件要用到的数据
+            data: function () {
+
+                return {
+                    msg: 'hello 马杀鸡'
+                }
+            },
+
+            template: "<div><button @click='doSome'>点我啊</button> <button @click='doSome'>点你2</button>  <h2>{{msg}}</h2></div>"
+        })
+
+
+        //实例化Vue对象，去管理#app这个div
+        const app = new Vue({
+            el: "#app",
+            data: {
+                msg: '',
+            }
+        })
+    </script>
+</body>
+
+</html>

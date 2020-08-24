@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text" v-model>
+
+    <p v-bind></p>
+</body>
+
+</html>
+
+<script>
+
+    var txt = document.querySelector('[v-model]')
+
+    txt.oninput = function(){
+
+        proxyData.name = this.value;
+    }
+
+    let data = {}
+
+    let data2 = {}
+    let data2 = {}
+
+    // new proxy对象
+    // 只要是data任何属性发生改变都会调用
+    // 不管是这个对象的什么属性都会调用set或get
+    let proxyData = new Proxy(data, {
+
+        // obj prop
+        get(obj, prop) {
+            
+            console.log('get');
+            return obj[prop];
+        },
+
+        //obj ： 绑定的对象
+        //prop : 赋的属性名
+        //value ： 属性值
+        set(obj, prop, value) {
+            obj[prop] = value
+
+            console.log('set');
+            console.log(obj);
+            console.log(prop); //
+            console.log(value);
+
+            document.querySelector('[v-bind]').innerHTML = value;
+            
+        }
+    })
+
+    // proxyData.name = 'jack'
+    // console.log(proxyData.name);
+    proxyData.age = 16;
+    
+    
+</script>
